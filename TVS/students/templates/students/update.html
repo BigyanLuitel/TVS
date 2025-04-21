@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block start %}
+<div class="container mt-5" >
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Update Student</h2>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Student Name</label>
+          <input name="student_name" value="{{student.student_name}}" required type="text" class="form-control">
+        </div>
+        <div class="mb-3"
+        <label for="classLevel">Class Level:</label>
+<select id="classLevel" value="{{student.student_class}}" name="student_class">
+  <option value="Nursery">Nursery</option>
+  <option value="LKG">LKG</option>
+  <option value="UKG">UKG</option>
+  <!-- Numeric options -->
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+</select>
+
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"> Student Image</label>
+            <input name="student_image" type="file" value="{{student.student_image}}"  class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Update Student</button>
+                        </form>
+{% endblock start %}

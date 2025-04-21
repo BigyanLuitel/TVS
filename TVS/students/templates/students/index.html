@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block start %}
+<div class="container mt-5" >
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Add Student</h2>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Student Name</label>
+          <input name="student_name" required type="text" class="form-control">
+        </div>
+        <div class="mb-3"
+        <label for="classLevel">Class Level:</label>
+<select id="classLevel" name="student_class">
+  <option value="Nursery">Nursery</option>
+  <option value="LKG">LKG</option>
+  <option value="UKG">UKG</option>
+  <!-- Numeric options -->
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+</select>
+
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"> Student Image</label>
+            <input name="student_image" type="file"  class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Add Student</button>
+                        </form>>
+
+                        <div class="mt-5">
+                          <div class="mx-auto col-6">
+                            <form action="">
+                        
+                            <div class="mb-3">
+                              <label for="exampleInputPassword1" class="form-label">Recepie Name</label>
+                              <input name="Search" value="{{recepie.recepie_name}}"  type="text" class="form-control">
+                        
+                            </div>
+                            <button type="submit" class="btn btn-primary"> Search recepie</button>
+                          </form>
+                        
+                          </div>
+                        </div>
+
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">SN</th>
+                                <th scope="col">Student Name</th>
+                                <th scope="col">Sutdent Class</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for student in students %}
+                              <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td> {{student.student_name}}</td>
+                                <td>{{student.student_class}}</td>
+                                <td>
+                                  <!-- {% if recepie.recepie_image %}
+                                    <img src="{{ recepie.recepie_image.url }}" alt="Recipe Image" width="100" height="100">
+                                  {% else %}
+                                    No image
+                                  {% endif %} -->
+                                </td>
+                                <td>
+                                  <form method="POST" action="{% url 'delete_record' student.id %}" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger m-2">Delete</button>
+                                  </form>
+                                
+                                  <a href="{%url 'update_record' student.id%}"><button class="btn btn-primary">Update</button></a>
+                                </td>
+                                
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+{% endblock start %}
