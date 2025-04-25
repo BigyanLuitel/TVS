@@ -1,5 +1,34 @@
 {% extends 'base.html' %}
 
 {% block start %}
-<h1>home page</h1>
+                          </div>
+                        </div>
+
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">SN</th>
+                                <th scope="col">Student Name</th>
+                                <th scope="col">Sutdent Class</th>
+                                <th scope="col">Image</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for student in students %}
+                              <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td> {{student.student_name}}</td>
+                                <td>{{student.student_class}}</td>
+                                <td>
+                                    <td>
+                                        {% if student.student_image %}
+                                         <img src="{{ student.student_image.url }}" alt="Recipe Image" width="100" height="100">
+                                       {% else %}
+                                         No image
+                                       {% endif %} 
+                                     </td>
+                                </td>
+                              {% endfor %}
+                            </tbody>
+                          </table>
 {% endblock start %}

@@ -41,11 +41,11 @@
                             <form action="">
                         
                             <div class="mb-3">
-                              <label for="exampleInputPassword1" class="form-label">Recepie Name</label>
+                              <label for="exampleInputPassword1" class="form-label">Student Name</label>
                               <input name="Search" value="{{recepie.recepie_name}}"  type="text" class="form-control">
                         
                             </div>
-                            <button type="submit" class="btn btn-primary"> Search recepie</button>
+                            <button type="submit" class="btn btn-primary"> Search Student</button>
                           </form>
                         
                           </div>
@@ -68,11 +68,11 @@
                                 <td> {{student.student_name}}</td>
                                 <td>{{student.student_class}}</td>
                                 <td>
-                                  <!-- {% if recepie.recepie_image %}
-                                    <img src="{{ recepie.recepie_image.url }}" alt="Recipe Image" width="100" height="100">
+                                   {% if student.student_image %}
+                                    <img src="{{ student.student_image.url }}" alt="Recipe Image" width="100" height="100">
                                   {% else %}
                                     No image
-                                  {% endif %} -->
+                                  {% endif %} 
                                 </td>
                                 <td>
                                   <form method="POST" action="{% url 'delete_record' student.id %}" style="display:inline;">
